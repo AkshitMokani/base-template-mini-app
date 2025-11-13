@@ -1,23 +1,34 @@
-import type { Metadata } from "next";
+"use client";
 
-import "~/app/globals.css";
-import { Providers } from "~/app/providers";
-import { APP_NAME, APP_DESCRIPTION } from "~/lib/constants";
+import "./globals.css";
+import { WagmiProvider, createConfig, http } from "wagmi";
+import { base } from "wagmi/chains";
+import { RainbowKitProvider, getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "@rainbow-me/rainbowkit/styles.css";
 
-export const metadata: Metadata = {
-  title: APP_NAME,
-  description: APP_DESCRIPTION,
-};
+const config = getDefaultConfig({
+  appName: "HyperMatch",
+  projectId: "YOUR_WALLETCONNECT_PROJECT_ID", // ← replace with your real one
+  chains: [base],
+  transports: {
+    [base.id]: http(),
+  },
+});
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const queryClient = new QueryClient();
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              {children}
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </body>
     </html>
   );

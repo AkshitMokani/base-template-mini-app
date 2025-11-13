@@ -30,6 +30,9 @@
     "@neynar/react": "^1.2.2",
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.0.2",
+    "@rainbow-me/rainbowkit": "^2.2.9",
+    "@tanstack/react-query": "^5.90.7",
+    "@upstash/redis": "^1.35.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dotenv": "^16.5.0",
@@ -40,8 +43,8 @@
     "react-dom": "^19",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
-    "viem": "^2.23.6",
-    "wagmi": "^2.14.12",
+    "viem": "^2.38.6",
+    "wagmi": "^2.19.2",
     "zod": "^3.24.2"
   },
   "devDependencies": {
