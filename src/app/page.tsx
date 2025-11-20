@@ -3,6 +3,7 @@
 import { useAccount } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useState, useEffect } from "react";
+import { sdk } from "@farcaster/frame-sdk";
 import Image from "next/image";
 
 const emojis = ["😎", "🤓", "🥳", "🤖", "🐵", "👑", "💥", "🧠"];
@@ -100,11 +101,20 @@ Vibecoded at HYPERTHON by @roshanonx & @BasedIndia ⚡`
   window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`);
 };
 
-const shareOnFarcaster = () => {
+const shareOnFarcaster = async () => {
   const text = `Just played HYPERMATCH 🎮 and scored ${score}! @aksh ⚡  
 Play now: https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch`;
-  const farcasterURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}`;
-  window.open(farcasterURL, "_blank");
+  try {
+    await sdk.actions.composeCast({
+      text: text,
+      embeds: ["https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch"],
+    });
+  } catch (error) {
+    console.error("Failed to compose cast:", error);
+    // Fallback to Warpcast URL if SDK fails
+    const farcasterURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}`;
+    window.open(farcasterURL, "_blank");
+  }
 };
 
   return (
