@@ -130,11 +130,18 @@ async function startDev() {
   // Start next dev with appropriate configuration
   const nextBin = path.normalize(path.join(projectRoot, 'node_modules', '.bin', 'next'));
 
-  nextDev = spawn(nextBin, ['dev'], {
+  // On Windows the project path can contain spaces which causes the
+  // command to be split when using a shell. When using a shell on Windows
+  // wrap the executable path in quotes and pass the full command string.
+  const useShell = process.platform === 'win32';
+  const command = useShell ? `"${nextBin}" dev` : nextBin;
+  const args = useShell ? undefined : ['dev'];
+
+  nextDev = spawn(command, args, {
     stdio: 'inherit',
     env: { ...process.env, NEXT_PUBLIC_URL: frameUrl, NEXTAUTH_URL: frameUrl },
     cwd: projectRoot,
-    shell: process.platform === 'win32' // Add shell option for Windows
+    shell: useShell
   });
 
   // Handle cleanup
