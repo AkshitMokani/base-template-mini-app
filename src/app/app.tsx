@@ -1,15 +1,25 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { APP_NAME } from "~/lib/constants";
+import { useEffect } from "react";
+import { sdk } from "@farcaster/frame-sdk";
 
-// note: dynamic import is required for components that use the Frame SDK
-const Demo = dynamic(() => import("~/components/Demo"), {
-  ssr: false,
-});
+export default function Home() {
+  useEffect(() => {
+    // Tell Farcaster your app is ready
+    sdk.actions.ready();
+  }, []);
 
-export default function App(
-  { title }: { title?: string } = { title: APP_NAME }
-) {
-  return <Demo title={title} />;
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen bg-[#0a0a0a] text-white">
+      <h1 className="text-4xl font-bold mb-4">⚡ HyperMatch</h1>
+      <p className="text-lg mb-8">Match, earn & vibe — now on Base!</p>
+
+      <button
+        onClick={() => alert("Game starting soon!")}
+        className="px-6 py-3 rounded-2xl bg-blue-500 hover:bg-blue-600 font-semibold text-white transition"
+      >
+        Start Game
+      </button>
+    </main>
+  );
 }

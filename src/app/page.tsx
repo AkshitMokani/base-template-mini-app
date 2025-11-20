@@ -92,25 +92,27 @@ export default function HyperMatch() {
   };
 
   const shareOnTwitter = () => {
-    const text = encodeURIComponent(
-      `Just played HYPERMATCH 🎮 and scored ${score}!  
-Vibecoded at HYPERTHON Ahmedabad by @roshanonx & @BasedIndia ⚡`
-    );
-    window.open(`https://twitter.com/intent/tweet?text=${text}`);
-  };
+  const text = encodeURIComponent(
+    `Just played HYPERMATCH 🎮 and scored ${score}! @akshit_mokani ⚡ 
+Vibecoded at HYPERTHON by @roshanonx & @BasedIndia ⚡`
+  );
+  const url = encodeURIComponent("https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch");
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`);
+};
 
-  const shareOnFarcaster = () => {
-    const text = `Just played HYPERMATCH 🎮 and scored ${score}!`;
-    const farcasterURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}}`;
-    window.open(farcasterURL, "_blank");
-  };
+const shareOnFarcaster = () => {
+  const text = `Just played HYPERMATCH 🎮 and scored ${score}! @aksh ⚡  
+Play now: https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch`;
+  const farcasterURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}`;
+  window.open(farcasterURL, "_blank");
+};
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-800 text-white p-4">
       {screen === "intro" && (
         <div className="text-center space-y-4">
           <h1 className="text-5xl font-bold">⚡ HYPERMATCH ⚡</h1>
-          <p className="text-lg">Didn’t match your soulmate IRL? Try your luck here 😏</p>
+          <p className="text-lg">Flip cards, not relationships.</p>
 
           <div className="flex justify-center mt-4">
             <ConnectButton />
