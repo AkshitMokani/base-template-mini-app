@@ -1,15 +1,19 @@
+import type { Metadata } from "next";
 import "./globals.css";
-import { metadata } from "./metadata";
-import Providers from "./providers";
 
-export { metadata };
+export const metadata: Metadata = {
+  title: "HyperMatch",
+  description: "Match your cards",
+  other: {
+    "base:app_id": "6938574b4173bc2ae00fd646",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+      <head />
+      <body>{children}</body>
     </html>
   );
 }
