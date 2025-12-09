@@ -1,6 +1,23 @@
 {
   "frame": {
     "name": "HyperMatch",
+    "version": "1",
+    "homeUrl": "https://hypermatch.vercel.app/",
+    "iconUrl": "https://hypermatch.vercel.app/icon.png",
+    "tagline": "Match your Cards",
+    "subtitle": "Match your Cards",
+    "description": "Match the Cards",
+    "ogTitle": "HyperMatch - Match your cards.",
+    "ogDescription": "HyperMatch - Match your cards.",
+    "imageUrl": "https://hypermatch.vercel.app/og-image.png",
+    "ogImageUrl": "https://hypermatch.vercel.app/og-image.png",
+    "heroImageUrl": "https://hypermatch.vercel.app/og-image.png",
+    "screenshotUrls": [
+      "https://hypermatch.vercel.app/og-image.png"
+    ],
+    "castShareUrl": "https://hypermatch.vercel.app/",
+    "webhookUrl": "https://hypermatch.vercel.app/api/webhook",
+    "buttonTitle": "Let's Match",
     "tags": [
       "game",
       "cardgame",
@@ -8,25 +25,8 @@
       "hyper",
       "cardmatch"
     ],
-    "homeUrl": "https://hypermatch.vercel.app/",
-    "iconUrl": "https://hypermatch.vercel.app/icon.png",
-    "ogTitle": "HyperMatch - Match your cards.",
-    "tagline": "Match your Cards",
-    "version": "1",
-    "imageUrl": "https://hypermatch.vercel.app/og-image.png",
-    "subtitle": "Match your Cards",
-    "ogImageUrl": "https://hypermatch.vercel.app/og-image.png",
-    "webhookUrl": "https://hypermatch.vercel.app/api/webhook",
-    "buttonTitle": "Let's Match",
-    "description": "Match the Cards",
-    "castShareUrl": "https://hypermatch.vercel.app/",
-    "heroImageUrl": "https://hypermatch.vercel.app/og-image.png",
-    "ogDescription": "HyperMatch - Match your cards.",
-    "screenshotUrls": [
-      "https://hypermatch.vercel.app/og-image.png"
-    ],
-    "splashImageUrl": "https://hypermatch.vercel.app/splash.png",
     "primaryCategory": "games",
+    "splashImageUrl": "https://hypermatch.vercel.app/splash.png",
     "splashBackgroundColor": "#6200EA"
   },
   "accountAssociation": {

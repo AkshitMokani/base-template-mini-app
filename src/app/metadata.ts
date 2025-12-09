@@ -14,7 +14,7 @@ export const metadata = {
     siteName: "HyperMatch",
     images: [
       {
-        url: "og-image.png", // shorter, auto-resolved by metadataBase
+        url: "og-image.png",
         width: 1200,
         height: 630,
         alt: "⚡ HyperMatch — Web3 Memory Game",
@@ -32,11 +32,19 @@ export const metadata = {
     creator: "@roshanonx",
   },
 
+  // ⭐ FIXED MINI APP METADATA
   other: {
+    // Required
+    "fc:app:id": "F4jnVmzDZXj8",
+    "fc:app:noindex": "false",
+
+    // Frame metadata
     "fc:frame": "vNext",
     "fc:frame:image": "https://hypermatch.vercel.app/og-image.png",
-    "fc:frame:button:1": "🎮 Play Now",
-    "fc:frame:button:1:action": "link",
-    "fc:frame:button:1:target": "https://hypermatch.vercel.app",
+
+    // Launch Mini App button
+    "fc:frame:button:1": "🎮 Play HyperMatch",
+    "fc:frame:button:1:action": "launch_miniapp",
+    "fc:frame:button:1:target": "hypermatch",
   },
 };
