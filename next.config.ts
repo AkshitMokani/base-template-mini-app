@@ -1,31 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // ✅ Next.js 16 Turbopack config
-  turbopack: {
-    resolveAlias: {
-      "thread-stream/test": "false",
-      "pino/test": "false",
-    },
+  experimental: {
+    // Fix Turbopack crashes from pino + thread-stream
+    serverComponentsExternalPackages: ["pino", "thread-stream"],
   },
 
-  // ✅ Webpack override without types
-  webpack(config) {
-    config.module = config.module || {};
-    config.module.rules = config.module.rules || [];
-
-    config.module.rules.push({
-      test: /thread-stream\/test|pino\/test/,
-      use: "ignore-loader",
-    });
-
-    return config;
-  },
-
-  // ❗ ESLint + TS configs removed (no longer supported in Next.js 16)
-  // eslint: { ignoreDuringBuilds: true },
-  // typescript: { ignoreBuildErrors: true },
-
+  // Redirect farcaster.json to hosted manifest
   async redirects() {
     return [
       {
