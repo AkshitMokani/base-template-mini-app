@@ -8,6 +8,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    turbo: false,  // <-- Disable Turbopack here
+  },
   webpack: (config: any) => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
