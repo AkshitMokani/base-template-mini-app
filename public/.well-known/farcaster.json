@@ -35,7 +35,10 @@
     "signature": "qXLDa4/L6ui037A6xo9pJJIlwipWbw7XADr5UMgXTBQijUsY8wweiAM+TtpXY0f0xWyIsG+ABROZ9vvI4anMexw="
   },
   "miniapp": {
-    "name": "HyperMatch"
+    "name": "HyperMatch",
+    "url": "https://hypermatch.vercel.app/",
+    "icon": "https://hypermatch.vercel.app/icon.png",
+    "noindex": false
   },
   "baseBuilder": {
     "ownerAddress": "0x25B8b9336Eec2Eb12adA22cD248aF206d22E8d88"
