@@ -55,6 +55,7 @@
     "crypto": "^1.0.1",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
+    "ignore-loader": "^0.1.2",
     "localtunnel": "^1.8.3",
     "pino-pretty": "^13.0.0",
     "postcss": "^8",

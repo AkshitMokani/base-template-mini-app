@@ -1,24 +1,31 @@
-import path from 'path';
+import type { NextConfig } from "next";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+const nextConfig: NextConfig = {
+  // ✅ Next.js 16 Turbopack config
+  turbopack: {
+    resolveAlias: {
+      "thread-stream/test": "false",
+      "pino/test": "false",
+    },
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  experimental: {
-    turbo: false,  // <-- Disable Turbopack here
-  },
-  webpack: (config: any) => {
-    config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      '@react-native-async-storage/async-storage': path.resolve(__dirname, 'src/shims/async-storage-web.js'),
-    };
+
+  // ✅ Webpack override without types
+  webpack(config) {
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+
+    config.module.rules.push({
+      test: /thread-stream\/test|pino\/test/,
+      use: "ignore-loader",
+    });
+
     return config;
   },
+
+  // ❗ ESLint + TS configs removed (no longer supported in Next.js 16)
+  // eslint: { ignoreDuringBuilds: true },
+  // typescript: { ignoreBuildErrors: true },
+
   async redirects() {
     return [
       {
