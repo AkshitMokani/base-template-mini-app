@@ -26,7 +26,7 @@ export async function GET() {
     "signature": "qXLDa4/L6ui037A6xo9pJJIlwipWbw7XADr5UMgXTBQijUsY8wweiAM+TtpXY0f0xWyIsG+ABROZ9vvI4anMexw="
   },
   "baseBuilder": {
-    "ownerAddress": "0x9e8B7d013BB060242d31150c900Fb31F44681B89"
+    "ownerAddress": "0x25B8b9336Eec2Eb12adA22cD248aF206d22E8d88"
   }
     };
 
