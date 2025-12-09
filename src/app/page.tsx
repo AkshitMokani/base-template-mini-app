@@ -119,7 +119,7 @@ export default function HyperMatch() {
 
 
           <div className="bg-white/10 p-5 rounded-2xl text-left shadow-lg">
-            <h2 className="text-2xl font-semibold mb-3">Rules:</h2>
+            <h2 className="text-2xl font-semibold mb-3">Rules:-</h2>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li>Each match = +10 points</li>
               <li>Each remaining second = +10 points</li>
