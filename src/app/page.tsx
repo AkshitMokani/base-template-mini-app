@@ -12,7 +12,7 @@ export default function HyperMatch() {
   const { address, isConnected } = useAccount();
 
   const [screen, setScreen] = useState<"intro" | "game" | "result">("intro");
-  const [cards, setCards] = useState<{ id: number; emoji: string; flipped: boolean; matched: boolean; }[]>([]);
+  const [cards, setCards] = useState<{ id: number; emoji: string; flipped: boolean; matched: boolean }[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
   const [score, setScore] = useState(0);
   const [highest, setHighest] = useState<number>(0);
@@ -93,29 +93,41 @@ export default function HyperMatch() {
   };
 
   const shareOnTwitter = () => {
-  const text = encodeURIComponent(
-    `Just played HYPERMATCH 🎮 and scored ${score}! @akshit_mokani ⚡ 
+    const text = encodeURIComponent(
+      `Just played HYPERMATCH 🎮 and scored ${score}! @akshit_mokani ⚡ 
 Vibecoded at HYPERTHON by @roshanonx & @BasedIndia ⚡`
-  );
-  const url = encodeURIComponent("https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch");
-  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`);
-};
+    );
+    const url = encodeURIComponent("https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch");
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`);
+  };
 
-const shareOnFarcaster = async () => {
-  const text = `Just played HYPERMATCH 🎮 and scored ${score}! @aksh ⚡  
+  const shareOnFarcaster = async () => {
+    const text = `Just played HYPERMATCH 🎮 and scored ${score}! @aksh ⚡  
 Play now: https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch`;
-  try {
-    await sdk.actions.composeCast({
-      text: text,
-      embeds: ["https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch"],
-    });
-  } catch (error) {
-    console.error("Failed to compose cast:", error);
-    // Fallback to Warpcast URL if SDK fails
-    const farcasterURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}`;
-    window.open(farcasterURL, "_blank");
-  }
-};
+    try {
+      await sdk.actions.composeCast({
+        text: text,
+        embeds: ["https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch"],
+      });
+    } catch (error) {
+      console.error("Failed to compose cast:", error);
+      // Fallback to Warpcast URL if SDK fails
+      const farcasterURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}`;
+      window.open(farcasterURL, "_blank");
+    }
+  };
+
+  const shareOnBase = () => {
+    const text = `Just played HYPERMATCH 🎮 and scored ${score}!
+
+Built for Base • aksh.farcaster.eth
+
+Play now:
+https://hypermatch.vercel.app/`;
+
+    const baseURL = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}`;
+    window.open(baseURL, "_blank");
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-600 to-indigo-800 text-white p-4">
@@ -180,6 +192,9 @@ Play now: https://farcaster.xyz/miniapps/F4jnVmzDZXj8/hypermatch`;
             </button>
             <button onClick={shareOnFarcaster} className="bg-purple-500 px-4 py-2 rounded-lg text-white font-bold">
               📣 Share on Farcaster
+            </button>
+            <button onClick={shareOnBase} className="bg-blue-500 px-4 py-2 rounded-lg text-white font-bold">
+              🔵 Share on Base
             </button>
           </div>
           <button
